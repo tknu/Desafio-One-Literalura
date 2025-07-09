@@ -11,7 +11,7 @@ public class Menu {
     public void exibir() {
         var opcao = -1;
         while(opcao != 0) {
-            var menuTexto = """
+            var menu = """
                      ***********************************
                      Escolha o número de sua opção:
                      1- Buscar livro pelo título
@@ -23,7 +23,7 @@ public class Menu {
                      0 - Sair
                      ***********************************
                     """;
-            System.out.println(menuTexto);
+            System.out.println(menu);
 
             // Tratamento de exceção para entrada não numérica
             if(scanner.hasNextInt()) {

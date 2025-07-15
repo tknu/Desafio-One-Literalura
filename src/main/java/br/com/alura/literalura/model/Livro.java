@@ -11,7 +11,7 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique=true)
+    @Column(unique=true, length = 1000)
     private String titulo;
 
     private String idioma;

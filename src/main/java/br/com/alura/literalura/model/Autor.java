@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="autores")
@@ -17,8 +18,8 @@ public class Autor {
     @Column(unique=true)
     private String nome;
 
-    private int anoDeNascimento;
-    private int anoDeFalecimento;
+    private Integer anoDeNascimento;
+    private Integer anoDeFalecimento;
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Livro> livros = new ArrayList<>();
@@ -73,9 +74,16 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor: " + nome +
-                " (Nascimento: " + anoDeNascimento +
-                ", Falecimento: " + anoDeFalecimento + ")";
+        String livrosTitulos = livros.stream()
+                .map(Livro::getTitulo)
+                .collect(Collectors.joining(", "));
+
+        return  "----- Autor -----" +
+                "\nNome: " + nome +
+                "\nAno de Nascimento: " + anoDeNascimento +
+                "\nAno de Falecimento: " + anoDeFalecimento +
+                "\nLivros: [" + livrosTitulos + "]" +
+                "\n-----------------\n";
 
     }
 }

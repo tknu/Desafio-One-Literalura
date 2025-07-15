@@ -19,6 +19,7 @@ public class LiteraluraApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		// A aplicação agora delega toda a execução para a classe Menu
 		menu.exibir();
 
